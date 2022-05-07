@@ -1,0 +1,13 @@
+library(robotstxt)
+library(rvest)
+url <- "https://www.flipkart.com/search?q=google+mobile&sid=tyy%2C4io&as=on&as-show=on&otracker=AS_QueryStore_OrganicAutoSuggest_1_8_na_na_ps&otracker1=AS_QueryStore_OrganicAutoSuggest_1_8_na_na_ps&as-pos=1&as-type=RECENT&suggestionId=google+mobile%7CMobiles&requestId=b191066c-cfd2-4c03-a4e2-921e4aa5ebbb&as-backfill=on"
+path <- paths_allowed(url)
+web <- read_html(url)
+Name <- web%>%html_nodes("._4rR01T")%>%html_text()
+View(Name)
+Deal_Price <- web%>%html_nodes("._1_WHN1")%>%html_text()
+View(Deal_Price)
+Ratings <- web%>%html_nodes(".gUuXy-")%>%html_text()
+View(Ratings)
+mobile.ratings <- data.frame(Name, Deal_Price, Ratings)
+View(mobile.ratings)
